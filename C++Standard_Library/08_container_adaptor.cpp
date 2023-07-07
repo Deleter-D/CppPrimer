@@ -65,6 +65,6 @@ int main(int argc, char const *argv[])
     q.back()        | 返回尾元素，但不删除此元素，只适用于queue
     q.top()         | 返回最高优先级元素，但不删除此元素，只适用于priority_queue
     q.push(item)    | 在queue末尾或priority_queue的恰当位置创建一个元素
-    q.emplace(args) | 其值为item，或由args构造
+    q.emplace(args) | 该元素通过拷贝或移动item而来，或由args构造
     —————————————————————————————————————————————————————————————————————————————
 */
