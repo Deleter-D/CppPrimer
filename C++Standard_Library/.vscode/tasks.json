@@ -17,12 +17,9 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "detail": "编译器: \"C:\\Program Files\\MinGW\\bin\\g++.exe\""
         }
-    ]
-
+    ],
+    "version": "2.0.0"
 }
