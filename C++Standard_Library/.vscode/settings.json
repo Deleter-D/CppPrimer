@@ -5,6 +5,8 @@
         "xmemory": "cpp",
         "list": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "initializer_list": "cpp",
+        "functional": "cpp"
     }
 }
