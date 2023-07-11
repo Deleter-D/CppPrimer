@@ -7,6 +7,8 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "initializer_list": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "set": "cpp",
+        "iosfwd": "cpp"
     }
 }
