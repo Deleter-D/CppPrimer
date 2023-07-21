@@ -1,15 +1,14 @@
 #ifndef CONSTREF_H
 #define CONSTREF_H
 
-class ConstRef
-{
+class ConstRef {
 public:
-    ConstRef(int ii);
+  ConstRef(int ii);
 
 private:
-    int i;
-    const int ci;
-    int &ri;
+  int i;
+  const int ci;
+  int &ri;
 };
 
 // 赋值的方式实现构造函数

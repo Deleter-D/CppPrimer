@@ -11,21 +11,20 @@ bool (*pf)(const string &, const string &);
 string::size_type sumLength(const string &, const string &);
 bool cstringCompare(const char *, const char *);
 
-int main()
-{
-    pf = lengthCompare;  // pf指向名为lengthCompare的函数
-    pf = &lengthCompare; // 与上一句等价，取地址符是可选的
+int main() {
+  pf = lengthCompare;  // pf指向名为lengthCompare的函数
+  pf = &lengthCompare; // 与上一句等价，取地址符是可选的
 
-    // 可以直接使用函数指针调用该函数，无需提前解引用
-    // 下列三种调用方式均等价
-    bool b1 = pf("hello", "goodbye");
-    bool b2 = (*pf)("hello", "goodbye");
-    bool b3 = lengthCompare("hello", "goodbye");
+  // 可以直接使用函数指针调用该函数，无需提前解引用
+  // 下列三种调用方式均等价
+  bool b1 = pf("hello", "goodbye");
+  bool b2 = (*pf)("hello", "goodbye");
+  bool b3 = lengthCompare("hello", "goodbye");
 
-    pf = 0; // 正确：pf不指向任何函数
-    // pf = sumLength; // 错误：返回类型不匹配
-    // pf = cstringCompare; // 错误：形参类型不匹配
-    pf = lengthCompare; // 正确：函数和指针的类型精确匹配
+  pf = 0; // 正确：pf不指向任何函数
+  // pf = sumLength; // 错误：返回类型不匹配
+  // pf = cstringCompare; // 错误：形参类型不匹配
+  pf = lengthCompare; // 正确：函数和指针的类型精确匹配
 }
 
 // 重载函数的指针
@@ -45,11 +44,10 @@ void useBigger(const string &s1, const string &s2,
 // 等价的定义，显式的将第三个形参定义为函数指针
 void useBigger(const string &s1, const string &s2,
                bool (*pf)(const string &, const string &));
-void test()
-{
-    string s1, s2;
-    // 直接将函数作为实参使用，会自动转换成指针
-    useBigger(s1, s2, lengthCompare);
+void test() {
+  string s1, s2;
+  // 直接将函数作为实参使用，会自动转换成指针
+  useBigger(s1, s2, lengthCompare);
 }
 
 // 通过使用类型别名，简化使用函数指针
@@ -59,7 +57,7 @@ typedef decltype(lengthCompare) Func2; // 与上句类型等价
 typedef bool (*FuncP)(const string &, const string &);
 typedef decltype(lengthCompare) *FuncP2; // 与上句类型等价
 
-void useBigger(const string &, const string &, Func);  // useBigger的等价声明
+void useBigger(const string &, const string &, Func); // useBigger的等价声明
 void useBigger(const string &, const string &, FuncP); // useBigger的等价声明
 
 // 返回指向函数的指针

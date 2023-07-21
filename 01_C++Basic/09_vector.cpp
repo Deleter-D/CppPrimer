@@ -15,36 +15,34 @@ using namespace std;
     ———————————————————————————————————————————————————————————————————————————————————
 */
 
-int main()
-{
-    vector<int> v{1, 2, 3, 4, 5, 6, 7, 8, 9};
-    for (auto &i : v)
-        i *= i; // 求平方
-    for (auto i : v)
-        cout << i << " ";
-    cout << endl;
+int main() {
+  vector<int> v{1, 2, 3, 4, 5, 6, 7, 8, 9};
+  for (auto &i : v)
+    i *= i; // 求平方
+  for (auto i : v)
+    cout << i << " ";
+  cout << endl;
 
-    // 输入成绩并统计各成绩挡位的人数
-    vector<unsigned> grades;        // 存储成绩
-    vector<unsigned> scores(11, 0); // 存储各成绩挡位的人数0-9,10-19,...,90-99,100
-    unsigned grade;
-    while (cin >> grade)
-    {
-        if (grade <= 100)
-            grades.push_back(grade);
-        ++scores[grade / 10];
-    }
+  // 输入成绩并统计各成绩挡位的人数
+  vector<unsigned> grades; // 存储成绩
+  vector<unsigned> scores(11, 0); // 存储各成绩挡位的人数0-9,10-19,...,90-99,100
+  unsigned grade;
+  while (cin >> grade) {
+    if (grade <= 100)
+      grades.push_back(grade);
+    ++scores[grade / 10];
+  }
 
-    cout << "grades.size = " << grades.size() << endl;
-    for (auto item : grades)
-        cout << item << " ";
-    cout << endl;
+  cout << "grades.size = " << grades.size() << endl;
+  for (auto item : grades)
+    cout << item << " ";
+  cout << endl;
 
-    cout << "scores.size = " << scores.size() << endl;
-    for (auto item : scores)
-        cout << item << " ";
-    cout << endl;
-    return 0;
+  cout << "scores.size = " << scores.size() << endl;
+  for (auto item : scores)
+    cout << item << " ";
+  cout << endl;
+  return 0;
 }
 
 /*

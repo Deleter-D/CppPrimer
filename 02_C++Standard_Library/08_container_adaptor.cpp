@@ -4,23 +4,21 @@
 using namespace std;
 
 // 所有容器适配器都要求容器具有添加、删除以及方便访问尾元素的的能力
-int main(int argc, char const *argv[])
-{
-    stack<int> intStack;
-    for (size_t ix = 0; ix != 10; ix++)
-        intStack.push(ix);
+int main(int argc, char const *argv[]) {
+  stack<int> intStack;
+  for (size_t ix = 0; ix != 10; ix++)
+    intStack.push(ix);
 
-    while (!intStack.empty())
-    {
-        int value = intStack.top();
-        cout << value << endl;
-        intStack.pop();
-    }
+  while (!intStack.empty()) {
+    int value = intStack.top();
+    cout << value << endl;
+    intStack.pop();
+  }
 
-    // 指定适配器的底层容器
-    stack<int, vector<int>> intVecStack;
+  // 指定适配器的底层容器
+  stack<int, vector<int>> intVecStack;
 
-    return 0;
+  return 0;
 }
 
 /*
@@ -55,16 +53,18 @@ int main(int argc, char const *argv[])
 */
 
 /*
-                              队列和优先队列特有的操作
-    —————————————————————————————————————————————————————————————————————————————
+                        队列和优先队列特有的操作
+    —————————————————————————————————————————————————————————————————
     queue默认基于deque实现，priority_queue默认基于vector实现
     queue也可以用list或vector实现，priority_queue也可以用deque实现
-    —————————————————————————————————————————————————————————————————————————————
-    q.pop()         | 返回queue首元素或priority_queue的最高优先级元素，但不删除此元素
+    —————————————————————————————————————————————————————————————————
+    q.pop()         | 返回queue首元素或priority_queue的最高优先级元素，
+                    | 但不删除此元素
     q.front()       | 返回首元素，但不删除此元素
     q.back()        | 返回尾元素，但不删除此元素，只适用于queue
-    q.top()         | 返回最高优先级元素，但不删除此元素，只适用于priority_queue
+    q.top()         | 返回最高优先级元素，但不删除此元素，
+                    | 只适用于priority_queue
     q.push(item)    | 在queue末尾或priority_queue的恰当位置创建一个元素
     q.emplace(args) | 该元素通过拷贝或移动item而来，或由args构造
-    —————————————————————————————————————————————————————————————————————————————
+    —————————————————————————————————————————————————————————————————
 */

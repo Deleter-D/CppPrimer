@@ -4,11 +4,10 @@
 #include <string>
 using sz = std::string::size_type;
 
-struct Window
-{
-    sz height;
-    sz width;
-    char background;
+struct Window {
+  sz height;
+  sz width;
+  char background;
 };
 
 #endif

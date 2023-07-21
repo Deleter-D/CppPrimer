@@ -1,66 +1,55 @@
 using namespace std;
+#include "06_Sales_data.h"
 #include <iostream>
 #include <stdexcept>
-#include "06_Sales_data.h"
 
 // 传统方式处理问题
-int test1(Sales_data data1, Sales_data data2)
-{
+int test1(Sales_data data1, Sales_data data2) {
 
-    if (data1.bookNo == data2.bookNo)
-    {
-        cout << data1.revenue + data2.revenue << endl;
-        return 0;
-    }
-    else
-    {
-        cerr << "Data must refer to same bookNo." << endl;
-        return -1;
-    }
+  if (data1.bookNo == data2.bookNo) {
+    cout << data1.revenue + data2.revenue << endl;
+    return 0;
+  } else {
+    cerr << "Data must refer to same bookNo." << endl;
+    return -1;
+  }
 }
 
 // throw表达式处理异常
-int test2(Sales_data data1, Sales_data data2)
-{
-    // throw表达式：异常检测部分使用throw表达式来表示它遇到了无法解决的问题
-    if (data1.bookNo != data2.bookNo)
-        // 抛出一个异常，终止当前函数，并把控制器交给异常处理代码
+int test2(Sales_data data1, Sales_data data2) {
+  // throw表达式：异常检测部分使用throw表达式来表示它遇到了无法解决的问题
+  if (data1.bookNo != data2.bookNo)
+    // 抛出一个异常，终止当前函数，并把控制器交给异常处理代码
+    throw runtime_error("Data must refer to same bookNo.");
+  // runtime_error是标准库异常类型的一种，定义在stdexcept头文件中
+  cout << data1.revenue + data2.revenue << endl;
+  return 0;
+}
+
+void test3(Sales_data data1, Sales_data data2) {
+  while (true) {
+    // try语句块：异常处理部分使用try语句块处理，可以有多个catch
+    try {
+      if (data1.bookNo != data2.bookNo)
         throw runtime_error("Data must refer to same bookNo.");
-    // runtime_error是标准库异常类型的一种，定义在stdexcept头文件中
-    cout << data1.revenue + data2.revenue << endl;
-    return 0;
-}
-
-void test3(Sales_data data1, Sales_data data2)
-{
-    while (true)
-    {
-        // try语句块：异常处理部分使用try语句块处理，可以有多个catch
-        try
-        {
-            if (data1.bookNo != data2.bookNo)
-                throw runtime_error("Data must refer to same bookNo.");
-            cout << data1.revenue + data2.revenue << endl;
-        }
-        catch (runtime_error err)
-        {
-            cout << err.what() << "\nTry again? Enter y or n" << endl;
-            char c;
-            cin >> c;
-            if (!cin || c == 'n')
-                break;
-        }
+      cout << data1.revenue + data2.revenue << endl;
+    } catch (runtime_error err) {
+      cout << err.what() << "\nTry again? Enter y or n" << endl;
+      char c;
+      cin >> c;
+      if (!cin || c == 'n')
+        break;
     }
+  }
 }
 
-int main()
-{
-    Sales_data data1, data2;
-    data1.bookNo = "0001";
-    data2.bookNo = "0002";
-    // test1(data1, data2);
-    // test2(data1, data2);
-    test3(data1, data2);
+int main() {
+  Sales_data data1, data2;
+  data1.bookNo = "0001";
+  data2.bookNo = "0002";
+  // test1(data1, data2);
+  // test2(data1, data2);
+  test3(data1, data2);
 }
 
 /*  异常类：throw表达式和相关的catch子句之间传递异常的具体信息，分别定义在4个头文件中

@@ -9,30 +9,37 @@ using namespace std;
 
 void print(const string word, string::size_type size);
 
-int main()
-{
-    int x = 0;
-    // 若表达式为真，assert什么也不做
-    // 若表达式为假，assert输出信息并终止程序的执行
-    // assert(x);
+int main() {
+  int x = 0;
+  // 若表达式为真，assert什么也不做
+  // 若表达式为假，assert输出信息并终止程序的执行
+  // assert(x);
 
-    string word = "Hello world!";
-    string::size_type size = 100;
-    print(word, size);
+  string word = "Hello world!";
+  string::size_type size = 100;
+  print(word, size);
 }
 
 // 除了使用assert之外，可以使用NDEBUG编写自定义的调试代码
-void print(const string word, string::size_type size)
-{
+void print(const string word, string::size_type size) {
 #ifndef NDEBUG
-    if (word.size() < size)
-    {
-        cerr << "Error: " << __FILE__           // __FILE__存放文件名的字符串字面值
-             << " : in function " << __func__   // __func__存放当前函数名称的字符串字面值
-             << " at line " << __LINE__ << endl // __LINE__存放当前行号的整型字面值
-             << "    Compiled on " << __DATE__  // __DATE__存放文件编译日期的字符串字面值
-             << " at " << __TIME__ << endl      // __TIME__存放文件编译时间的字符串字面值
-             << "    Word read was \"" << word << "\": Length too short" << endl;
-    }
+  if (word.size() < size) {
+    cerr
+        // __FILE__存放文件名的字符串字面值
+        << "Error: "
+        << __FILE__
+        // __func__存放当前函数名称的字符串字面值
+        << " : in function "
+        << __func__
+        // __LINE__存放当前行号的整型字面值
+        << " at line " << __LINE__
+        << endl
+        // __DATE__存放文件编译日期的字符串字面值
+        << "    Compiled on "
+        << __DATE__
+        // __TIME__存放文件编译时间的字符串字面值
+        << " at " << __TIME__ << endl
+        << "    Word read was \"" << word << "\": Length too short" << endl;
+  }
 #endif
 }

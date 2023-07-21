@@ -2,34 +2,36 @@
 #include <vector>
 using namespace std;
 
-int main(int argc, char const *argv[])
-{
-    vector<int> ivec;
-    // size应为0，capacity依赖于具体实现
-    cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity() << endl;
-    for (vector<int>::size_type ix = 0; ix != 24; ++ix)
-    {
-        ivec.push_back(ix);
-    }
-    // size应为24，capacity应大于等于24，具体值依赖于标准库的实现
-    cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity() << endl;
+int main(int argc, char const *argv[]) {
+  vector<int> ivec;
+  // size应为0，capacity依赖于具体实现
+  cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity()
+       << endl;
+  for (vector<int>::size_type ix = 0; ix != 24; ++ix) {
+    ivec.push_back(ix);
+  }
+  // size应为24，capacity应大于等于24，具体值依赖于标准库的实现
+  cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity()
+       << endl;
 
-    ivec.reserve(50);
-    // size应为24，capacity应大于等于50，具体值依赖于标准库的实现
-    cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity() << endl;
+  ivec.reserve(50);
+  // size应为24，capacity应大于等于50，具体值依赖于标准库的实现
+  cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity()
+       << endl;
 
-    while (ivec.size() != ivec.capacity())
-    {
-        ivec.push_back(0);
-    }
-    ivec.push_back(42);
-    // size应为51，capacity应大于等于51，具体值依赖于标准库的实现
-    cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity() << endl;
+  while (ivec.size() != ivec.capacity()) {
+    ivec.push_back(0);
+  }
+  ivec.push_back(42);
+  // size应为51，capacity应大于等于51，具体值依赖于标准库的实现
+  cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity()
+       << endl;
 
-    ivec.shrink_to_fit();
-    // size应为51，capacity有可能是51，请求缩减到实际大小，但标准库并不保证退还内存
-    cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity() << endl;
-    return 0;
+  ivec.shrink_to_fit();
+  // size应为51，capacity有可能是51，请求缩减到实际大小，但标准库并不保证退还内存
+  cout << "ivec size: " << ivec.size() << ". capacity: " << ivec.capacity()
+       << endl;
+  return 0;
 }
 
 /*

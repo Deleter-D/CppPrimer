@@ -8,10 +8,9 @@
    2、没有定义任何构造函数
    3、没有类内初始值
    4、没有基类，也没有virtual函数*/
-struct Aggregate_class
-{
-    int ival;
-    std::string s;
+struct Aggregate_class {
+  int ival;
+  std::string s;
 };
 
 #endif

@@ -11,25 +11,24 @@
    4、类必须使用析构函数的默认定义*/
 
 // 除了算术类型、引用和指针外，某些类也是字面值类型
-class Literal_class
-{
+class Literal_class {
 public:
-    // constexpr构造函数必须初始化所有数据成员
-    // constexpr构造函数体一般来说应该是空的
-    // 因为constexpr函数只能有返回语句，而构造函数不能有返回语句
-    constexpr Literal_class(bool b = true) : hw(b), io(b), other(b) {}
-    constexpr Literal_class(bool h, bool i, bool o) : hw(h), io(i), other(o) {}
+  // constexpr构造函数必须初始化所有数据成员
+  // constexpr构造函数体一般来说应该是空的
+  // 因为constexpr函数只能有返回语句，而构造函数不能有返回语句
+  constexpr Literal_class(bool b = true) : hw(b), io(b), other(b) {}
+  constexpr Literal_class(bool h, bool i, bool o) : hw(h), io(i), other(o) {}
 
-    constexpr bool any() const { return hw || io || other; }
+  constexpr bool any() const { return hw || io || other; }
 
-    void set_hw(bool b) { hw = b; }
-    void set_io(bool b) { io = b; }
-    void set_other(bool b) { other = b; }
+  void set_hw(bool b) { hw = b; }
+  void set_io(bool b) { io = b; }
+  void set_other(bool b) { other = b; }
 
 private:
-    bool hw;    // 非IO错误的硬件错误
-    bool io;    // IO错误
-    bool other; // 其他错误
+  bool hw;    // 非IO错误的硬件错误
+  bool io;    // IO错误
+  bool other; // 其他错误
 };
 
 #endif

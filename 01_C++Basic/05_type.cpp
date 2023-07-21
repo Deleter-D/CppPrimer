@@ -10,9 +10,10 @@ using wages = double;
 // 若将本名简单拼接，则基本类型就变成了char，*称为了声明符的一部分，这是错误的理解方式
 typedef char *pstring;
 const pstring cstr = 0; // cstr是指向char型变量的常量指针
-const pstring *ps;      // ps是一个指针，所指的对象是指向char型变量的常量指针
+const pstring *ps; // ps是一个指针，所指的对象是指向char型变量的常量指针
 // 在这种情况下，不应该将别名简单替换为本名理解
-const char *cstr = 0; // 这是对const pstring cstr的错误理解，这将cstr理解为指向char型常量的指针
+// 这是对const pstring cstr的错误理解，这将cstr理解为指向char型常量的指针
+const char *cstr = 0;
 
 // auto类型说明符
 int val1 = 1, val2 = 2;
@@ -25,15 +26,19 @@ int i = 0, &r = i;
 auto a = r; // 此时a为int型
 // auto一般会忽略顶层const，保留底层const
 const int ci = i, &cr = ci;
-auto b = ci;            // b是int型，ci的顶层const被忽略，auto推演为int
-auto c = cr;            // c是int型，cr是ci的别名，而ci本身是顶层const，auto推演为int
-auto d = &i;            // d是int型指针，auto推演为int
-auto e = &ci;           // e是指向int型常量的指针，底层const没有被忽略，auto推演为const int
-const auto f = ci;      // f是const int，auto的推演类型为int
-auto &g = ci;           // g是int型常量引用，绑定到ci，底层const没有被忽略，auto推演为const int
-const auto &h = 42;     // h是int型常量，要绑定字面值必须显式声明const，若写为auto &h = 42则会报错
-auto k = ci, &l = i;    // k是int型，l是int型引用，auto推演为int
-auto &m = ci, *p = &ci; // m是int型常量的引用，p是指向int型常量的指针，auto推演为const int
+auto b = ci; // b是int型，ci的顶层const被忽略，auto推演为int
+auto c = cr; // c是int型，cr是ci的别名，而ci本身是顶层const，auto推演为int
+auto d = &i; // d是int型指针，auto推演为int
+// e是指向int型常量的指针，底层const没有被忽略，auto推演为const int
+auto e = &ci;
+const auto f = ci; // f是const int，auto的推演类型为int
+// g是int型常量引用，绑定到ci，底层const没有被忽略，auto推演为const int
+auto &g = ci;
+const auto &h = 42; // h是int型常量，要绑定字面值必须显式声明const，若写为auto
+                    // &h = 42则会报错
+auto k = ci, &l = i; // k是int型，l是int型引用，auto推演为int
+// m是int型常量的引用，p是指向int型常量的指针，auto推演为const int
+auto &m = ci, *p = &ci;
 // auto &n = i, *p2 = &ci;
 // 上述语句n是int型引用，p2是指向int型常量的指针，类型不同，故错误
 
@@ -47,7 +52,7 @@ decltype(ci) y = x; // y的类型是const int &，注意此时的y是引用，�
 
 int i = 42, *p = &i, &r = i;
 decltype(r + 0) b; // 加法的结果是int，故b是未初始化的int型变量
-decltype(*p) c;    // p由*解引用后得到的类型是int&而非int，故c必须初始化
+decltype(*p) c; // p由*解引用后得到的类型是int&而非int，故c必须初始化
 // decltype((variable))的结果永远是引用
 // decltype(variable)的结果只有当variable本身是引用时才是引用
 decltype((i)) d; // d是int&，必须初始化

@@ -14,7 +14,8 @@ int func() { return 0; } // 模拟有返回值的函数
 
 // 若想在多文件中共享const对象，则需在变量的定义之前加上extern关键字
 // 通常情况不建议这样做
-extern const int buf_size_2 = func(); // 假设该常量值由函数返回，在本文件中如此定义
+// 假设该常量值由函数返回，在本文件中如此定义
+extern const int buf_size_2 = func();
 // 在别的文件中并没有定义func()函数，故无法用该函数初始化，此时就可以通过extern获取
 extern const int buf_size_2; // 在其他文件中如此获取
 
@@ -43,7 +44,8 @@ const double *cptr = &pi; // 常量指针可以指向常量
 
 // 指向变量的常量指针
 double pi2 = 3.14;
-const double *cptr2 = &pi2; // 不能通过cptr2修改pi2的值，但可以利用这一特性限制指针的权限
+// 不能通过cptr2修改pi2的值，但可以利用这一特性限制指针的权限
+const double *cptr2 = &pi2;
 
 // const指针必须初始化，若未初始化，后续不可以对它进行赋值
 // 不变的是const指针本身，而不是指向的对象
@@ -57,9 +59,9 @@ const double *const pip = &pi3; // 指向常量的常量指针
 // 顶层const：表示指针本身是一个常量
 // 底层const：表示指针所指向的对象是一个常量
 int num = 0;
-int *const ptr_num = &num;            // 顶层
-const int num2 = 42;                  // 顶层
-const int *ptr_num2 = &num2;          // 底层
+int *const ptr_num = &num;   // 顶层
+const int num2 = 42;         // 顶层
+const int *ptr_num2 = &num2; // 底层
 const int *const ptr_num3 = ptr_num2; // 第一个const是底层，第二个const是顶层
 
 constexpr int size() { return 1; }
@@ -71,7 +73,7 @@ constexpr int limit = mf + 1;
 constexpr int sz = size(); // 只有当size()是constexpr函数时才正确
 
 // constexpr修饰指针时，仅对指针有效，与指针所指的对象无关
-const int *p = nullptr;     // p是一个指向整型常量的指针，const将p修饰为底层
+const int *p = nullptr; // p是一个指向整型常量的指针，const将p修饰为底层
 constexpr int *q = nullptr; // q是一个指向整数的常量指针，constexpr将q修饰为顶层
 // constexpr指针可以指向常量，也可以指向非常量
 int j = 0;

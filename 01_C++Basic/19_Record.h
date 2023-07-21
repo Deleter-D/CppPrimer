@@ -4,29 +4,25 @@
 using namespace std;
 #include <string>
 
-struct Account
-{
-    string account_num;
-    string password;
+struct Account {
+  string account_num;
+  string password;
 };
 
-struct Phone
-{
-    string phone_num;
-    string location;
+struct Phone {
+  string phone_num;
+  string location;
 };
 
-struct Name
-{
-    string name;
-    unsigned short gender;
+struct Name {
+  string name;
+  unsigned short gender;
 };
 
-struct Record
-{
-    Account account;
-    Phone phone;
-    Name name;
+struct Record {
+  Account account;
+  Phone phone;
+  Name name;
 };
 
 #endif

@@ -5,11 +5,10 @@
 #include <string>
 // 类定义可使用struct或class两个关键字
 // struct是public的，class是private的
-struct Sales_data
-{
-    std::string bookNo;
-    unsigned units_sold = 0; // C++11开始可以在定义中初始化
-    double revenue = 0.0;
+struct Sales_data {
+  std::string bookNo;
+  unsigned units_sold = 0; // C++11开始可以在定义中初始化
+  double revenue = 0.0;
 };
 
 #endif
