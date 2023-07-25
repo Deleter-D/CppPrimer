@@ -51,6 +51,16 @@
         "iomanip": "cpp",
         "optional": "cpp",
         "xlocmon": "cpp",
-        "xloctime": "cpp"
+        "xloctime": "cpp",
+        "map": "cpp",
+        "unordered_map": "cpp",
+        "fstream": "cpp",
+        "functional": "cpp",
+        "locale": "cpp",
+        "regex": "cpp",
+        "sstream": "cpp",
+        "xhash": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp"
     }
 }
